@@ -80,15 +80,14 @@ try:
 except Exception:
     Image = None
 
+# 初始化错误处理变量
+_import_error_message = None
+
 try:
     from ali_business_analyzer import AliBusinessAnalyzer
 except Exception as e:
-    # 延迟显示错误，确保在 Streamlit 上下文中
-    def show_import_error():
-        st.error(f"无法导入 AliBusinessAnalyzer：{e}")
-        st.stop()
-    # 先保存函数，稍后调用
-    _import_error_func = show_import_error
+    # 保存错误信息，稍后在Streamlit上下文中显示
+    _import_error_message = str(e)
     AliBusinessAnalyzer = None
 
 try:
@@ -115,12 +114,24 @@ def ensure_output_dir():
     os.makedirs(os.path.join("output", "uploads"), exist_ok=True)
 
 
+def show_import_error():
+    """显示导入错误"""
+    if _import_error_message:
+        st.error(f"无法导入 AliBusinessAnalyzer：{_import_error_message}")
+        st.info("""
+        **解决方案：**
+        1. 确保 `ali_business_analyzer.py` 文件存在
+        2. 检查所有依赖是否已安装：`pip install -r requirements_web.txt`
+        3. 查看服务器日志获取详细错误信息
+        """)
+        st.stop()
+
 def init_state():
     """初始化 session state（安全版本）"""
     try:
         if "analyzer" not in st.session_state:
             if AliBusinessAnalyzer is None:
-                _import_error_func()
+                show_import_error()
             st.session_state.analyzer = AliBusinessAnalyzer()
         if "data" not in st.session_state:
             st.session_state.data = None
@@ -219,7 +230,7 @@ ensure_output_dir()
 
 # 检查导入错误
 if AliBusinessAnalyzer is None:
-    _import_error_func()
+    show_import_error()
 
 init_state()
 
