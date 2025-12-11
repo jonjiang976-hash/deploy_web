@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# 数据文件
+*.xlsx
+*.csv
+saved_data.xlsx
+output/*.png
+output/*.html
+output/*.pdf
+output/uploads/*
+
+# 日志文件
+*.log
+*.pkl
+
+# 配置文件（包含敏感信息）
+config.json
+config_qianwen.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+

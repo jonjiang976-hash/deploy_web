@@ -1,0 +1,78 @@
+{
+    "contact_methods": [
+        "tm",
+        "询盘",
+        "WhatsApp",
+        "邮件",
+        "电话",
+        "微信"
+    ],
+    "handlers": [
+        "Kim",
+        "Chris Hu",
+        "May Ning",
+        "Jade zhang",
+        "Jon Jiang",
+        "Carol Chen"
+    ],
+    "customer_levels": [
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+    ],
+    "continents": [
+        "亚洲",
+        "欧洲",
+        "北美洲",
+        "南美洲",
+        "非洲",
+        "大洋洲"
+    ],
+    "follow_up_levels": [
+        "A",
+        "B",
+        "C",
+        "X"
+    ],
+    "follow_up_level_descriptions": {
+        "A": "精准询盘：客户明确说明产品需求，包括各种信息（数量、运输/付款要求、公司信息等）",
+        "B": "普通询盘：广泛询盘，内容广泛，只是询问价格或对产品感兴趣，或消息未读，需要进一步跟进",
+        "C": "个人买家/不匹配询盘/垃圾询盘",
+        "X": "已下样品单/大货客户，持续跟进"
+    },
+    "chart_settings": {
+        "figure_size": [12, 8],
+        "dpi": 100,
+        "font_size": 12,
+        "colors": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7", "#DDA0DD"]
+    },
+    "export_settings": {
+        "default_filename": "询盘分析表.xlsx",
+        "date_format": "%Y-%m-%d",
+        "include_charts": true
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": "ali_business.log"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

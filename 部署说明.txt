@@ -1,0 +1,96 @@
+==========================================
+  阿里国际业务智能复盘工具 - 网页版
+  服务器部署说明
+==========================================
+
+📦 部署包内容
+--------------
+1. ali_online.py              - 主程序
+2. ali_business_analyzer.py   - 核心分析器
+3. ali_business_dashboard.py  - 大屏功能
+4. requirements_web.txt       - 依赖列表
+5. start.sh / start.bat       - 启动脚本
+6. .streamlit/config.toml     - Streamlit配置
+
+🚀 快速部署步骤
+--------------
+
+【步骤1】上传文件
+将整个 deploy_web 目录上传到服务器
+
+【步骤2】安装依赖
+cd deploy_web
+pip install -r requirements_web.txt
+
+【步骤3】启动应用
+方式A - 直接启动:
+  streamlit run ali_online.py --server.port 8501 --server.address 0.0.0.0
+
+方式B - 后台运行:
+  nohup streamlit run ali_online.py --server.port 8501 --server.address 0.0.0.0 > app.log 2>&1 &
+
+方式C - 使用screen:
+  screen -S ali_app
+  streamlit run ali_online.py --server.port 8501 --server.address 0.0.0.0
+  (按 Ctrl+A 然后 D 退出screen)
+
+【步骤4】访问应用
+浏览器打开: http://服务器IP:8501
+
+🌐 常见部署平台
+--------------
+
+1. 自有服务器
+   - 上传文件 → 安装依赖 → 启动应用
+   - 建议使用Nginx反向代理
+
+2. Streamlit Cloud (推荐)
+   - 推送到GitHub
+   - 访问 streamlit.io/cloud
+   - 一键部署
+
+3. PythonAnywhere
+   - 通过SSH上传文件
+   - 使用SSH启动: streamlit run ali_online.py
+   - 配置反向代理
+
+4. Docker
+   - 使用提供的Dockerfile
+   - docker build -t ali-web .
+   - docker run -p 8501:8501 ali-web
+
+⚙️ 配置说明
+-----------
+
+修改端口:
+  编辑 .streamlit/config.toml 中的 port 值
+
+修改地址:
+  默认 0.0.0.0 允许外部访问
+  如需仅本地访问，改为 127.0.0.1
+
+🔧 故障排查
+-----------
+
+问题: 端口被占用
+解决: 修改 .streamlit/config.toml 中的端口号
+
+问题: 无法访问
+解决: 
+  - 检查防火墙设置
+  - 确认应用正在运行
+  - 查看日志文件
+
+问题: 依赖安装失败
+解决:
+  pip install --upgrade pip
+  pip install streamlit pandas matplotlib pillow openpyxl plotly reportlab
+
+📞 需要帮助?
+-----------
+查看 README.md 获取详细说明
+
+==========================================
+部署完成后，访问 http://服务器IP:8501
+==========================================
+
