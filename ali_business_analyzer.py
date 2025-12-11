@@ -32,8 +32,19 @@ from typing import Dict, List, Tuple, Optional
 import requests
 import warnings
 from pathlib import Path
-import tkinter as tk
-from tkinter import ttk, filedialog, messagebox, scrolledtext
+# tkinter 作为可选依赖（网页版不需要）
+try:
+    import tkinter as tk
+    from tkinter import ttk, filedialog, messagebox, scrolledtext
+    TKINTER_AVAILABLE = True
+except ImportError:
+    TKINTER_AVAILABLE = False
+    # 创建占位符以避免错误
+    tk = None
+    ttk = None
+    filedialog = None
+    messagebox = None
+    scrolledtext = None
 import threading
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle

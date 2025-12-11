@@ -125,11 +125,36 @@ streamlit run ali_online.py --server.port 8501 --server.address 0.0.0.0
 
 ### 方式三：使用Streamlit Cloud（最简单）
 
-1. 将代码推送到GitHub
-2. 访问 https://streamlit.io/cloud
-3. 连接GitHub仓库
-4. 选择 `ali_online.py` 作为主文件
-5. 自动部署！
+**重要：Streamlit Cloud 需要 `requirements.txt` 文件！**
+
+1. **确保 `requirements.txt` 文件在仓库根目录**
+   - 本部署包已包含 `requirements.txt`
+   - Streamlit Cloud 会自动读取此文件安装依赖
+
+2. **将代码推送到GitHub**
+   ```bash
+   git add .
+   git commit -m "Deploy to Streamlit Cloud"
+   git push
+   ```
+
+3. **部署到Streamlit Cloud**
+   - 访问 https://streamlit.io/cloud
+   - 使用GitHub账号登录
+   - 点击 "New app"
+   - 选择您的仓库和分支
+   - **Main file path**: `ali_online.py`
+   - 点击 "Deploy!"
+
+4. **等待部署完成**
+   - 通常需要 2-5 分钟
+   - 查看构建日志了解进度
+
+5. **访问应用**
+   - 部署完成后会获得一个 URL
+   - 例如：`https://your-app-name.streamlit.app`
+
+**详细说明请查看 `Streamlit_Cloud_部署说明.md`**
 
 ## ⚙️ 配置说明
 
